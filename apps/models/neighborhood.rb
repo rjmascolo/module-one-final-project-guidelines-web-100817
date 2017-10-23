@@ -1,3 +1,3 @@
-class Neighborhood < ActiveRecord::Base
-  
+class InspectionViolation < ActiveRecord::Base
+
 end

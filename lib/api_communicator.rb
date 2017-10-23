@@ -52,7 +52,7 @@ def inspection_violation
   data.map do |c|
     {
       violation_code: c["violation_code"],
-      restaurant: c["camis"],
+      restaurant_id: c["camis"],
       inspection_date: c["inspection_date"]
     }
   end
