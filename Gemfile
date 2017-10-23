@@ -5,3 +5,7 @@ gem "sinatra-activerecord"
 gem "sqlite3"
 gem "pry"
 gem "require_all"
+
+#not installed when forked. Ryan added this.
+gem 'rake'
+gem 'activerecord'
