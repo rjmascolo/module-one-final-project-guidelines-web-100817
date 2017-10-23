@@ -15,3 +15,5 @@ end
 def inspection_violations_seed
   inspection_violation.each { |x| Inspection_violation.new(x) }
 end
+
+restaurant_seed
