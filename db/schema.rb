@@ -12,13 +12,13 @@
 
 ActiveRecord::Schema.define(version: 4) do
 
-  create_table "inspection_violations", force: :cascade do |t|
+  create_table "inspection_violations", id: false, force: :cascade do |t|
     t.string   "violation_code"
     t.string   "restaurant_id"
     t.datetime "inspection_date"
   end
 
-  create_table "inspections", force: :cascade do |t|
+  create_table "inspections", id: false, force: :cascade do |t|
     t.datetime "inspection_date"
     t.string   "inspection_type"
     t.string   "restaurant_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 4) do
     t.string   "action"
   end
 
-  create_table "restaurants", force: :cascade do |t|
+  create_table "restaurants", id: false, force: :cascade do |t|
     t.string "restaurant_id"
     t.string "name"
     t.string "cuisine"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 4) do
     t.string "phone_number"
   end
 
-  create_table "violations", force: :cascade do |t|
+  create_table "violations", id: false, force: :cascade do |t|
     t.string "violation_code"
     t.string "violation_description"
   end
