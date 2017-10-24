@@ -35,6 +35,14 @@ def self.find_most_sanitary_restaurant_by_zipcode(zipcode)
   restaurant_name.name
 end
 
+def self.find_rodents_by_zipcode(zipcode)
+  restaurants_in_zip = find_restaurant_by_zipcode(zipcode)
+  restaurants_with_rodents = restaurants_in_zip.select do |restaurant|
+    violation = restaurant.inspections[0].violations[0].violation_code
+   violation == "08A" || violation == "04L" || violation == "04K"
+  end
+  restaurants_with_rodents.map {|restaurant| "#{restaurant.name}, #{restaurant.address}"}
+end
 
 
 
