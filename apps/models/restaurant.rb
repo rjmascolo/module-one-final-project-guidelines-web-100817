@@ -3,7 +3,7 @@ class Restaurant < ActiveRecord::Base
   has_many :violations, through: :inspections
 
 
-
+## Dick's Section Begins Here ##
 def address
  "#{self.building} #{self.street} #{self.zipcode}"
 end
@@ -19,22 +19,13 @@ def self.find_latest_inspection_by_name_and_zipcode(name, zipcode)
   end
 end
 
+
 def self.find_restaurant_by_zipcode(zipcode)
   Restaurant.where(zipcode: zipcode)
 end
 
-def self.find_most_sanitary_restaurant_by_zipcode(zipcode)
-  score = 0
-  restaurant_name= ""
-  restaurants_in_zip = find_restaurant_by_zipcode(zipcode)
-  restaurants_in_zip.each do |restaurant|
-    if restaurant.inspections[0].score > score
-      restaurant_name = restaurant
-    end
-  end
-  restaurant_name.name
-end
 
+###  need to update to find most recent inspection - ryan has code for this ###
 def self.find_rodents_by_zipcode(zipcode)
   restaurants_in_zip = find_restaurant_by_zipcode(zipcode)
   restaurants_with_rodents = restaurants_in_zip.select do |restaurant|
@@ -43,7 +34,7 @@ def self.find_rodents_by_zipcode(zipcode)
   end
   restaurants_with_rodents.map {|restaurant| "#{restaurant.name}, #{restaurant.address}"}
 end
-
+## Dick's Section Ends Here ##
 
 
 
