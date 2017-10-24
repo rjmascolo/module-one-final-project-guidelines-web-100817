@@ -25,6 +25,11 @@ def self.find_restaurant_by_zipcode(zipcode)
 end
 
 
+## Not Finished, but in progress ##
+def most_recent_inspection
+  self.inspections.maximum(:inspection_date)
+end
+
 ###  need to update to find most recent inspection - ryan has code for this ###
 def self.find_rodents_by_zipcode(zipcode)
   restaurants_in_zip = find_restaurant_by_zipcode(zipcode)
