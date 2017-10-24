@@ -7,11 +7,16 @@ def fetch_data_on_restaurants
   restaurants_parsed = JSON.parse(restaurants)
 end
 
-fetch_data_on_restaurants
-
-def restaurants
+def create_violations
   data = fetch_data_on_restaurants
-  data.map do |c|
+  data.map do |x|
+    restaurant = Restaurant.find_or_create_by(restaurant_params(x))
+    inspection = Inspection.find_or_create_by(inspection_params(x,restaurant))
+    inspection << Violation.find_or_create_by(violation_params(x))
+  end
+end
+
+def restaurant_params(c)
     {
       restaurant_id: c["camis"],
       name: c["dba"],
@@ -21,41 +26,31 @@ def restaurants
       building: c["building"],
       phone_number: c["phone"]
     }
-  end
 end
 
-def violations
-  data = fetch_data_on_restaurants
-  data.map do |c|
+def violation_params(c)
     {
       violation_code: c["violation_code"],
       violation_description: c["violation_description"]
     }
-  end.uniq
 end
 
-def inspection
-    data = fetch_data_on_restaurants
-    data.map do |c|
+def inspection_params(c, restaurant)
       {
         inspection_date: c["inspection_date"],
         inspection_type: c["inspection_type"],
-        restaurant_id: c["camis"],
+        restaurant: restaurant,
         score: c["score"],
         grade: c["grade"],
         grade_date: c["grade_date"],
         action: c["action"]
       }
-    end.uniq
 end
 
-def inspection_violation
-  data = fetch_data_on_restaurants
-  data.map do |c|
+def inspection_violation_params(c)
     {
       violation_code: c["violation_code"],
       restaurant_id: c["camis"],
       inspection_date: c["inspection_date"]
     }
-  end
 end
