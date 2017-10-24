@@ -12,7 +12,7 @@ def create_violations
   data.map do |x|
     restaurant = Restaurant.find_or_create_by(restaurant_params(x))
     inspection = Inspection.find_or_create_by(inspection_params(x,restaurant))
-    inspection << Violation.find_or_create_by(violation_params(x))
+    inspection.violations << Violation.find_or_create_by(violation_params(x))
   end
 end
 
@@ -45,12 +45,4 @@ def inspection_params(c, restaurant)
         grade_date: c["grade_date"],
         action: c["action"]
       }
-end
-
-def inspection_violation_params(c)
-    {
-      violation_code: c["violation_code"],
-      restaurant_id: c["camis"],
-      inspection_date: c["inspection_date"]
-    }
 end
