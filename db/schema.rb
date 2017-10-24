@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 4) do
 
   create_table "inspection_violations", force: :cascade do |t|
     t.string   "violation_code"
-    t.string   "camis"
+    t.string   "restaurant_id"
     t.datetime "inspection_date"
   end
 

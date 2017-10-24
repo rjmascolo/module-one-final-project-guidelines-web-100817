@@ -7,6 +7,8 @@ def fetch_data_on_restaurants
   restaurants_parsed = JSON.parse(restaurants)
 end
 
+fetch_data_on_restaurants
+
 def restaurants
   data = fetch_data_on_restaurants
   data.map do |c|
