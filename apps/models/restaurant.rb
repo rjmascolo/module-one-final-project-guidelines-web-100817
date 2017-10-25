@@ -1,3 +1,5 @@
+
+
 class Restaurant < ActiveRecord::Base
   has_many :inspections
   has_many :violations, through: :inspections
@@ -108,8 +110,6 @@ def self.find_rodents_by_zipcode(zipcode)
   restaurants_with_rodents.map {|restaurant| "#{return_data_format(restaurant.name)}, #{restaurant.address_without_zipcode}"}
 end
 ## Dick's Section Ends Here ##
-
-
 
 
 end
