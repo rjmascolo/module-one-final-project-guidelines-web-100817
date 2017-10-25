@@ -6,7 +6,8 @@ def returns_most_sanitary_rest_in_zip_and_cuisine
   cusine_options_in_neighborhood(zipcode_input)
   puts "\nAbove are some options in your neighborhood:"
   cuisine_input = retrive_the_cuisine(zipcode_input)
-  puts return_data_format(Restaurant.most_sanitary_in_area_by_cuisine(zipcode_input, cuisine_input).name)
+  winning_restaurant = Restaurant.most_sanitary_in_area_by_cuisine(zipcode_input, cuisine_input)
+  puts "\n\nRestaurant: #{return_data_format(winning_restaurant.name)} \nLast Inspection Score:#{winning_restaurant.most_recent_inspection.score}"
 end
 
 def retrive_the_cuisine(zipcode)

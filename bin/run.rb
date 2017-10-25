@@ -1,3 +1,3 @@
 require_relative '../config/environment'
 
-runner
+returns_most_sanitary_rest_in_zip_and_cuisine

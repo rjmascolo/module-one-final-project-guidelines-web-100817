@@ -1,0 +1,4 @@
+def restaurants_in_area_that_have_least_violations
+  zipcode_input = retrive_the_zipcode
+  Inspections.resturant_info_of_top_five_inspections_by_zipcode(zipcode)
+end
