@@ -58,16 +58,22 @@ def most_recent_inspection
   self.inspections.where(inspection_date:last_date).first
 end
 
-###  need to update to find most recent inspection - ryan has code for this ###
+def violation_codes_from_most_recent_inspection
+  violation_array = self.most_recent_inspection.violations
+  violation_array.map {|violation| violation.violation_code}
+end
+
+
 def self.find_rodents_by_zipcode(zipcode)
   restaurants_in_zip = find_restaurant_by_zipcode(zipcode)
+  rodent_violation_codes = ["08A", "04L", "04K"]
   restaurants_with_rodents = restaurants_in_zip.select do |restaurant|
-    violation = restaurant.inspections[0].violations[0].violation_code
-   violation == "08A" || violation == "04L" || violation == "04K"
+    restaurant.violation_codes_from_most_recent_inspection & rodent_violation_codes != []
   end
   restaurants_with_rodents.map {|restaurant| "#{restaurant.name}, #{restaurant.address}"}
 end
 ## Dick's Section Ends Here ##
+
 
 
 
