@@ -35,5 +35,3 @@ def cusine_options_in_neighborhood(zipcode)
     end
   end
 end
-
-returns_most_sanitary_rest_in_zip_and_cuisine

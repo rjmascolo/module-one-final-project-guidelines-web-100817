@@ -17,7 +17,9 @@ class Restaurant < ActiveRecord::Base
   end
 
   def self.restaurant_type_in_zip(zipcode,cuisine)
-    self.where(zipcode: zipcode.to_s).where(cuisine: cuisine)
+    Restaurant.all.select do |rest|
+      restaurant_data_format(rest.cuisine) == restaurant_data_format(cuisine) && rest.zipcode == zipcode.to_s
+    end
   end
 
   def self.most_populated_zip_of_cuisine(cuisine)
@@ -67,7 +69,7 @@ def grade_return(grade)
 end
 
 def self.find_latest_inspection_by_name_and_zipcode(name, zipcode)
-restaurant = Restaurant.all.select do |rest|
+  restaurant = Restaurant.all.select do |rest|
     restaurant_data_format(rest.name) == restaurant_data_format(name) && rest.zipcode == zipcode.to_s
   end[0]
   if restaurant == nil
