@@ -40,17 +40,40 @@ class Restaurant < ActiveRecord::Base
 
 ## Dick's Section Begins Here ##
 def address
- "#{self.building} #{self.street} #{self.zipcode}"
+ "#{self.building} #{return_data_format(self.street)} #{self.zipcode}"
+end
+
+def address_without_zipcode
+   "#{self.building} #{return_data_format(self.street)}"
+end
+
+def grade_return(grade)
+ case grade
+ when "A"
+   "Its grade was an A."
+ when "B"
+   "Its grade was a B."
+ when "C"
+   "Its grade was a C."
+ when "Z"
+   "The restaurant is listed as \"Grade Pending\"."
+ when "P"
+   "The restaurant is listed as \"Grade Pending\" after having been shut down in the past for violations."
+ else
+   "No grade is available for this restauarant."
+ end
 end
 
 def self.find_latest_inspection_by_name_and_zipcode(name, zipcode)
-  restaurant = Restaurant.find_by(name: name, zipcode: zipcode)
+restaurant = Restaurant.all.select do |rest|
+    restaurant_data_format(rest.name) == restaurant_data_format(name) && rest.zipcode == zipcode.to_s
+  end[0]
   if restaurant == nil
     "No records found. Please check the restaurant name and zipcode and try again."
   else
-  "The restaurants last inspection was on #{Date.parse(restaurant.inspections[0].inspection_date)}
-    Its score was #{restaurant.inspections[0].score}.
-    Its grade was #{restaurant.inspections[0].grade}."
+  "The restaurants last inspection was on #{Date.parse(restaurant.most_recent_inspection.inspection_date)}
+    Its score was #{restaurant.most_recent_inspection.score}.
+    #{restaurant.grade_return(restaurant.most_recent_inspection.grade)}"
   end
 end
 
@@ -82,7 +105,7 @@ def self.find_rodents_by_zipcode(zipcode)
   restaurants_with_rodents = restaurants_in_zip.select do |restaurant|
     restaurant.violation_codes_from_most_recent_inspection & rodent_violation_codes != []
   end
-  restaurants_with_rodents.map {|restaurant| "#{restaurant.name}, #{restaurant.address}"}
+  restaurants_with_rodents.map {|restaurant| "#{return_data_format(restaurant.name)}, #{restaurant.address_without_zipcode}"}
 end
 ## Dick's Section Ends Here ##
 
