@@ -1,3 +1,11 @@
+def restaurant_data_format(name)
+  name.downcase.gsub(/\s+/, "")
+end
+
+def return_data_format(name)
+  name.split.map{|word| word.downcase.capitalize}.join(" ")
+end
+
 
 def introduction
   "
@@ -49,5 +57,5 @@ puts introduction
 puts menu
 puts menu_input(get_input)
 end
-
-runner
+#
+#runner
