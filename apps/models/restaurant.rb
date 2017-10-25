@@ -27,6 +27,14 @@ class Restaurant < ActiveRecord::Base
     self.all.map{ |obj| obj.zipcode }.uniq
   end
 
+  def self.different_types_of_cuisines
+    self.all.map{ |obj| obj.cuisine }.uniq
+  end
+
+  def self.cuisine_available_in_zipcode (zipcode)
+    self.where(zipcode: zipcode).map{ |obj| obj.cuisine }.uniq
+  end
+
 ######### Ryan's section ending ###################
 
 

@@ -49,5 +49,3 @@ puts introduction
 puts menu
 puts menu_input(get_input)
 end
-
-runner
