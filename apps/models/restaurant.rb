@@ -23,6 +23,10 @@ class Restaurant < ActiveRecord::Base
     x.sort_by { |name, age| age }
   end
 
+  def self.zipcodes_of_restuarants
+    self.all.map{ |obj| obj.zipcode }.uniq
+  end
+
 ######### Ryan's section ending ###################
 
 
