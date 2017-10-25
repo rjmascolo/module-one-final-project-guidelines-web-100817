@@ -6,6 +6,10 @@ def return_data_format(name)
   name.split.map{|word| word.downcase.capitalize}.join(" ")
 end
 
+def throw_error
+  "You have entered an invalid selection."
+end
+
 
 def introduction
   "
