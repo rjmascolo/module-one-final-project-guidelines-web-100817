@@ -4,7 +4,7 @@ class Restaurant < ActiveRecord::Base
 
 ########## Ryan's Section ############
   def self.most_sanitary_in_area_by_cuisine(zipcode, cuisine)
-    in_area = self.restaurant_type_in_zip(zipcode,cuisine)
+    in_area = self.restaurant_type_in_zip(zipcode.to_s ,cuisine)
     last_inspections = {}
     in_area.each do |obj|
       last_inspect = obj.most_recent_inspection
@@ -15,7 +15,7 @@ class Restaurant < ActiveRecord::Base
   end
 
   def self.restaurant_type_in_zip(zipcode,cuisine)
-    self.where(zipcode: zipcode).where(cuisine: cuisine)
+    self.where(zipcode: zipcode.to_s).where(cuisine: cuisine)
   end
 
   def self.most_populated_zip_of_cuisine(cuisine)
@@ -92,7 +92,7 @@ end
 
 
 def self.find_rodents_by_zipcode(zipcode)
-  restaurants_in_zip = find_restaurant_by_zipcode(zipcode)
+  restaurants_in_zip = find_restaurant_by_zipcode(zipcode.to_s)
   rodent_violation_codes = ["08A", "04L", "04K"]
   restaurants_with_rodents = restaurants_in_zip.select do |restaurant|
     restaurant.violation_codes_from_most_recent_inspection & rodent_violation_codes != []
