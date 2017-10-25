@@ -3,15 +3,17 @@
 def returns_most_sanitary_rest_in_zip_and_cuisine
   puts "What zipcode are you searching for food in?"
   zipcode_input = gets.chomp
+  binding.pry
    if !valid_zipcode?(zipcode_input)
      puts "That is an invalid zipcode. Please try again"
      returns_most_sanitary_rest_in_zip_and_cuisine
-  end
+   end
   puts "What type of cuisine would you like?"
   puts "Below are some options in your neighborhood"
   cusine_options_in_neighborhood(zipcode_input)
   cuisine_input = get_input
   list_of_restaurants = Restaurant.most_sanitary_in_area_by_cuisine(zipcode, cuisine)
+
 end
 
 
@@ -35,5 +37,3 @@ def cusine_options_in_neighborhood(zipcode)
     end
   end
 end
-
-returns_most_sanitary_rest_in_zip_and_cuisine

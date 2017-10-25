@@ -1,5 +1,3 @@
-
-
 class Restaurant < ActiveRecord::Base
   has_many :inspections
   has_many :violations, through: :inspections
@@ -111,5 +109,6 @@ def self.find_rodents_by_zipcode(zipcode)
 end
 ## Dick's Section Ends Here ##
 
+Restaurant.most_sanitary_in_area_by_cuisine(10036, "American")
 
 end

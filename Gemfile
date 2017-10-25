@@ -7,5 +7,3 @@ gem "pry"
 gem "require_all"
 gem "rest-client"
 #not installed when forked. Ryan added this.
-gem 'rake'
-gem 'activerecord'
