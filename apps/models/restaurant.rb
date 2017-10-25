@@ -5,13 +5,17 @@ class Restaurant < ActiveRecord::Base
 ########## Ryan's Section ############
   def self.most_sanitary_in_area_by_cuisine(zipcode, cuisine)
     in_area = self.restaurant_type_in_zip(zipcode.to_s ,cuisine)
-    last_inspections = {}
-    in_area.each do |obj|
-      last_inspect = obj.most_recent_inspection
-      last_inspections[last_inspect.id] = last_inspect.score
+    if in_area == []
+      "No restaurant found in #{zipcode} matching the cuisine type #{cuisine}"
+    else
+      last_inspections = {}
+      in_area.each do |obj|
+        last_inspect = obj.most_recent_inspection
+        last_inspections[last_inspect.id] = last_inspect.score
+      end
+      restaurant_id = [last_inspections.min_by{|k, v| v}].to_h.keys[0]
+      self.find(restaurant_id)
     end
-    restaurant_id = [last_inspections.min_by{|k, v| v}].to_h.keys[0]
-    self.find(restaurant_id)
   end
 
   def self.restaurant_type_in_zip(zipcode,cuisine)
@@ -107,10 +111,13 @@ def self.find_rodents_by_zipcode(zipcode)
   restaurants_with_rodents = restaurants_in_zip.select do |restaurant|
     restaurant.violation_codes_from_most_recent_inspection & rodent_violation_codes != []
   end
-  restaurants_with_rodents.map {|restaurant| "#{return_data_format(restaurant.name)}, #{restaurant.address_without_zipcode}"}
+  if restaurants_with_rodents == []
+    "No restaurants with rodents found in #{zipcode}"
+  else
+    restaurants_with_rodents.map {|restaurant| "#{return_data_format(restaurant.name)}, #{restaurant.address_without_zipcode}"}
+  end
 end
 ## Dick's Section Ends Here ##
 
-Restaurant.most_sanitary_in_area_by_cuisine(10036, "American")
 
 end
