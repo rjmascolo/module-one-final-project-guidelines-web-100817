@@ -1,5 +1,7 @@
 def restaurant_data_format(name)
-  name.downcase.gsub(/\s+/, "")
+  if name != nil
+    name.downcase.gsub(/\s+/, "")
+  end
 end
 
 def return_data_format(name)
@@ -28,8 +30,8 @@ def menu
   "                  - Your options are as follows -
          1. Find the most recent inspection for a restaurant
          2. Find the most sanitary restaurants in your area
-         3. Find the most sanitary restaurant in your area by cuisine
-         4. Find all restaurants in your area with rat and rodent violations
+         3. Find all restaurants in your area with rat and rodent violations
+         4. Find the most sanitary restaurant in your area by cuisine
             (select your option by number please)"
 end
 
@@ -48,7 +50,7 @@ def menu_input(input)
   when "2"
     puts "2"
   when "3"
-    puts "3"
+    user_story_three
   when "4"
     user_story_four
   else
@@ -76,4 +78,19 @@ def rat
    (((\"~` _.-'.-'           __`-.   )         //
      jgs (((\"`             (((---~\"`         //
                                             ((________________"
+end
+
+def return_to_menu_or_exit
+  puts "Would you like to return to the menu or exit?"
+  puts "Enter \'menu\' or \'exit\'"
+  input = gets.chomp
+  until input == "exit" || input == "menu" do
+    puts "Incomplete command. Please enter either \'menu\' or \'exit\'"
+    input = gets.chomp
+  end
+  if input == "exit"
+    puts "\nGoodbye!"
+  elsif input == "menu"
+    runner
+  end
 end
