@@ -5,9 +5,9 @@ def returns_most_sanitary_rest_in_zip_and_cuisine
   cusine_options_in_neighborhood(zipcode_input)
   cuisine_input = retrive_the_cuisine(zipcode_input)
   return_winning_restaurant(zipcode_input, cuisine_input)
+  puts ""
+  return_to_menu_or_exit
 end
-
-
 
 def return_winning_restaurant(zipcode, cuisine)
   winning_restaurant = Restaurant.most_sanitary_in_area_by_cuisine(zipcode, cuisine)

@@ -49,7 +49,11 @@ def menu_input(input)
   when "1"
     user_story_one
   when "2"
+<<<<<<< HEAD
     restaurants_in_area_that_have_least_violations
+=======
+   restaurants_in_area_that_have_least_violations
+>>>>>>> 5b8ca8d42a294844dc7cd1fa4fc8b79029a21fe4
   when "3"
     user_story_three
   when "4"
@@ -60,12 +64,17 @@ def menu_input(input)
 end
 
 def runner
-puts introduction
-puts menu
-puts menu_input(get_input)
+  puts introduction
+  puts menu
+  puts menu_input(get_input)
 end
 #
 #runner
+
+def option_to_continue_or_exit
+  puts menu
+  puts menu_input(get_input)
+end
 
 def rat
   puts "         __             _,-\"~^\"-.
@@ -93,7 +102,8 @@ def return_to_menu_or_exit
   if input == "exit"
     puts "\nGoodbye!"
   elsif input == "menu"
-    runner
+    system('clear')
+    option_to_continue_or_exit
   end
 end
 # retreiving zipcode functions

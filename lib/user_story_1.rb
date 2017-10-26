@@ -4,5 +4,8 @@ def user_story_one
   puts "
   Enter the zip code of the restaurant you'd like the report for."
   zipcode = gets.chomp
-  Restaurant.find_latest_inspection_by_name_and_zipcode(name, zipcode)
+  puts ""
+  puts Restaurant.find_latest_inspection_by_name_and_zipcode(name, zipcode)
+  puts ""
+  return_to_menu_or_exit
 end
