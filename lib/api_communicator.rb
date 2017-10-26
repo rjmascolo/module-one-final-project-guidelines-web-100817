@@ -3,10 +3,10 @@ require 'json'
 require 'pry'
 
 def fetch_data_on_restaurants
-  restaurants = RestClient.get("https://data.cityofnewyork.us/resource/9w7m-hzhe.json")
+  restaurants = RestClient.get("https://data.cityofnewyork.us/resource/9w7m-hzhe.json?$limit=100000")
   restaurants_parsed = JSON.parse(restaurants)
 end
-  
+
 def create_violations
   data = fetch_data_on_restaurants
   data.map do |x|

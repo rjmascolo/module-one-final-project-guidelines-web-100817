@@ -10,36 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 4) do
-
-  create_table "inspection_violations", force: :cascade do |t|
-    t.integer "inspection_id"
-    t.integer "violation_id"
-  end
-
-  create_table "inspections", force: :cascade do |t|
-    t.string  "inspection_date"
-    t.string  "inspection_type"
-    t.string  "restaurant_id"
-    t.integer "score"
-    t.string  "grade"
-    t.string  "grade_date"
-    t.string  "action"
-  end
-
-  create_table "restaurants", force: :cascade do |t|
-    t.string "restaurant_id"
-    t.string "name"
-    t.string "cuisine"
-    t.string "zipcode"
-    t.string "building"
-    t.string "street"
-    t.string "phone_number"
-  end
-
-  create_table "violations", force: :cascade do |t|
-    t.string "violation_code"
-    t.string "violation_description"
-  end
+ActiveRecord::Schema.define(version: 0) do
 
 end
