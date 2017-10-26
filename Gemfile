@@ -6,4 +6,5 @@ gem "sqlite3"
 gem "pry"
 gem "require_all"
 gem "rest-client"
+gem "colorize"
 #not installed when forked. Ryan added this.
