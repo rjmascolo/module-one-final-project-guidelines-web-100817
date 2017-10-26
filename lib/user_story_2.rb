@@ -87,7 +87,7 @@ end
 
 def valid_zipcode?(zipcode)
   if zipcode.length != 5
-    puts "Your zipcode is not 6 digits. Please reenter.\n"
+    puts "Your zipcode is not 5 digits. Please reenter.\n"
     false
   else
     Restaurant.zipcodes_of_restuarants.any?{|word| word == zipcode}

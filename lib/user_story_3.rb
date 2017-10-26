@@ -2,7 +2,8 @@ def user_story_three
   system('clear')
   puts rat
   puts ""
-  Inspection.find_rodents_by_zipcode(gets_rodent_zip)
+  puts Inspection.find_rodents_by_zipcode(gets_rodent_zip)
+  return_to_menu_or_exit
 end
 
 

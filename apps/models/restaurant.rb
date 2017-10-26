@@ -71,6 +71,12 @@ class Restaurant < ActiveRecord::Base
    end
   end
 
+  def score_return(score)
+    if score != nil
+      "Its score was #{restaurant.most_recent_inspection.score}"
+    end
+  end
+
   def self.find_latest_inspection_by_name_and_zipcode(name, zipcode)
     restaurant = Restaurant.all.select do |rest|
       if rest.name != nil
@@ -80,8 +86,9 @@ class Restaurant < ActiveRecord::Base
     if restaurant == nil
       "No records found. Please check the restaurant name and zipcode and try again."
     else
-    "The restaurants last inspection was on #{Date.parse(restaurant.most_recent_inspection.inspection_date)}
-      Its score was #{restaurant.most_recent_inspection.score}.
+    "
+      The restaurants last inspection was on #{Date.parse(restaurant.most_recent_inspection.inspection_date)}
+      #{restaurant.score_return(restaurant.most_recent_inspection.score)}
       #{restaurant.grade_return(restaurant.most_recent_inspection.grade)}"
     end
   end
@@ -91,7 +98,7 @@ class Restaurant < ActiveRecord::Base
   end
 
 
-  ## Not Finished, but in progress ##
+
   def most_recent_inspection_date
     self.inspections.maximum(:inspection_date)
   end
@@ -106,20 +113,6 @@ class Restaurant < ActiveRecord::Base
     violation_array.map {|violation| violation.violation_code}
   end
 
-
-  # def self.find_rodents_by_zipcode(zipcode)
-  #   restaurants_in_zip = find_restaurant_by_zipcode(zipcode.to_s)
-  #   rodent_violation_codes = ["04L", "04K"]
-  #   restaurants_with_rodents = restaurants_in_zip.select do |restaurant|
-  #     restaurant.violation_codes_from_most_recent_inspection & rodent_violation_codes != []
-  #   end
-  #   if restaurants_with_rodents == []
-  #     "No restaurants with rodents found in #{zipcode}"
-  #   else
-  #
-  #     restaurants_with_rodents.map {|restaurant| "#{return_data_format(restaurant.name)}, #{restaurant.address_without_zipcode}"}
-  #   end
-  # end
 ## Dick's Section Ends Here ##
 
 
