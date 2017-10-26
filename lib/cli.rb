@@ -50,10 +50,14 @@ def menu_input(input)
     user_story_one
   when "2"
 <<<<<<< HEAD
+<<<<<<< HEAD
     restaurants_in_area_that_have_least_violations
 =======
    restaurants_in_area_that_have_least_violations
 >>>>>>> 5b8ca8d42a294844dc7cd1fa4fc8b79029a21fe4
+=======
+   restaurants_in_area_that_have_least_violations 
+>>>>>>> c9da7970532e3af4f7c236dd455d22d1f1f2311a
   when "3"
     user_story_three
   when "4"

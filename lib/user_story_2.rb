@@ -11,7 +11,7 @@ end
 
 def return_winning_restaurant(zipcode, cuisine)
   winning_restaurant = Restaurant.most_sanitary_in_area_by_cuisine(zipcode, cuisine)
-  puts "\nRestaurant: #{return_data_format(winning_restaurant.name)} \nLast Inspection Score: #{winning_restaurant.most_recent_inspection.score} \n\n"
+  puts "\nRestaurant: #{return_data_format(winning_restaurant.name).colorize(:color => :black, :background => :white)} \nLast Inspection Score: #{(winning_restaurant.most_recent_inspection.score).to_s.colorize(:color => :black, :background => :white)} \n\n"
 end
 
 def retrive_the_cuisine(zipcode)
