@@ -106,19 +106,11 @@ def retrive_the_zipcode
 end
 
 def valid_zipcode?(zipcode)
-  x = Restaurant.zipcodes_of_restuarants.any?{|word| word == zipcode}
   if zipcode.length != 5
-    puts "That is not a proper zipcode"
+    puts "Your zipcode is not 6 digits. Please reenter.\n"
     false
-  elsif !x
-    puts "The zipcode you entered is not in the NYC area. Please try again."
-    false
-<<<<<<< HEAD
-=======
   else
     Restaurant.zipcodes_of_restuarants.any?{|word| word == zipcode}
 >>>>>>> 3911b2b4f3eb490c3f773298725fd7fcefb003e4
->>>>>>> 737dce8e309fc5265ddaa75ac5b349b739f1f1e2
   end
-  x
 end
