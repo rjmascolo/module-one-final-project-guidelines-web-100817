@@ -77,3 +77,23 @@ def rat
      jgs (((\"`             (((---~\"`         //
                                             ((________________"
 end
+
+# retreiving zipcode functions
+
+def retrive_the_zipcode
+  puts "What zipcode are you searching for food in?"
+  zipcode_input = gets.chomp
+   while !valid_zipcode?(zipcode_input)
+     zipcode_input = gets.chomp
+   end
+   zipcode_input
+end
+
+def valid_zipcode?(zipcode)
+  if zipcode.length != 5
+    puts "Your zipcode is not 6 digits. Please reenter.\n"
+    false
+  else
+    Restaurant.zipcodes_of_restuarants.any?{|word| word == zipcode}
+  end
+end
