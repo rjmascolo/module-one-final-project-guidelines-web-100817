@@ -11,7 +11,7 @@ class Restaurant < ActiveRecord::Base
       last_inspections = {}
       in_area.each do |obj|
         last_inspect = obj.most_recent_inspection
-        last_inspections[last_inspect.id] = last_inspect.score
+        last_inspections[last_inspect.restaurant_id] = last_inspect.score
       end
       restaurant_id = [last_inspections.min_by{|k, v| v}].to_h.keys[0]
       self.find(restaurant_id)
@@ -19,6 +19,7 @@ class Restaurant < ActiveRecord::Base
   end
 
   def self.restaurant_type_in_zip(zipcode,cuisine)
+    # self.where(zipcode: zipcode).where(cuisine: cuisine)
     Restaurant.all.select do |rest|
       restaurant_data_format(rest.cuisine) == restaurant_data_format(cuisine) && rest.zipcode == zipcode.to_s
     end
@@ -82,7 +83,6 @@ def self.find_latest_inspection_by_name_and_zipcode(name, zipcode)
     #{restaurant.grade_return(restaurant.most_recent_inspection.grade)}"
   end
 end
-
 
 def self.find_restaurant_by_zipcode(zipcode)
   Restaurant.where(zipcode: zipcode)
