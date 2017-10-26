@@ -1,3 +1,3 @@
 require_relative '../config/environment'
 
-return_to_menu_or_exit
+restaurants_in_area_that_have_least_violations
