@@ -1,5 +1,7 @@
 def restaurant_data_format(name)
-  name.downcase.gsub(/\s+/, "")
+  if name != nil
+    name.downcase.gsub(/\s+/, "")
+  end
 end
 
 def return_data_format(name)
@@ -28,8 +30,8 @@ def menu
   "                  - Your options are as follows -
          1. Find the most recent inspection for a restaurant
          2. Find the most sanitary restaurants in your area
-         3. Find the most sanitary restaurant in your area by cuisine
-         4. Find all restaurants in your area with rat and rodent violations
+         3. Find all restaurants in your area with rat and rodent violations
+         4. Find the most sanitary restaurant in your area by cuisine
             (select your option by number please)"
 end
 
@@ -78,6 +80,20 @@ def rat
                                             ((________________"
 end
 
+<<<<<<< HEAD
+def return_to_menu_or_exit
+  puts "Would you like to return to the menu or exit?"
+  puts "Enter \'menu\' or \'exit\'"
+  input = gets.chomp
+  until input == "exit" || input == "menu" do
+    puts "Incomplete command. Please enter either \'menu\' or \'exit\'"
+    input = gets.chomp
+  end
+  if input == "exit"
+    puts "\nGoodbye!"
+  elsif input == "menu"
+    runner
+=======
 # retreiving zipcode functions
 
 def retrive_the_zipcode
@@ -97,6 +113,12 @@ def valid_zipcode?(zipcode)
   elsif !x
     puts "The zipcode you entered is not in the NYC area. Please try again."
     false
+<<<<<<< HEAD
+=======
+  else
+    Restaurant.zipcodes_of_restuarants.any?{|word| word == zipcode}
+>>>>>>> 3911b2b4f3eb490c3f773298725fd7fcefb003e4
+>>>>>>> 737dce8e309fc5265ddaa75ac5b349b739f1f1e2
   end
   x
 end

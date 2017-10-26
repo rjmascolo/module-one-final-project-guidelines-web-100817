@@ -1,6 +1,6 @@
-def user_story_four
+def user_story_three
   puts "Enter the zip code that you'd like a rodent report for."
   zipcode = gets.chomp
-  Restaurant.find_rodents_by_zipcode(zipcode)
+  Inspection.find_rodents_by_zipcode(zipcode)
 
 end
