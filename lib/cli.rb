@@ -47,12 +47,16 @@ end
 def menu_input(input)
   case input
   when "1"
+    system('clear')
     user_story_one
   when "2"
+    system('clear')
     restaurants_in_area_that_have_least_violations
   when "3"
+    system('clear')
     user_story_three
   when "4"
+    system('clear')
     returns_most_sanitary_rest_in_zip_and_cuisine
   else
     puts "That is not a valid selection. Please enter a number 1 - 4"
@@ -120,4 +124,19 @@ def valid_zipcode?(zipcode)
   else
     Restaurant.zipcodes_of_restuarants.any?{|word| word == zipcode}
   end
+end
+
+def food
+  puts "
+       __
+      /
+   .-/-.
+   |'-'|
+   |   |
+   |   |   .-\"\"\"\"-.
+   \\___/  /' .  '. \\   \\|/\\//
+         (`-..:...-')  |`\"\"`|
+          ;-......-;   |    |
+           '------'    \\____/"
+  puts ""
 end

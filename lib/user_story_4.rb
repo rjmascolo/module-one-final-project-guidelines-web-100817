@@ -1,4 +1,5 @@
 def restaurants_in_area_that_have_least_violations
+  food
   zipcode_input = retrive_the_zipcode
   rest_array = Inspection.resturant_info_of_top_five_inspections_by_zipcode(zipcode_input)
   print_out_list_of_restaurants(rest_array)
