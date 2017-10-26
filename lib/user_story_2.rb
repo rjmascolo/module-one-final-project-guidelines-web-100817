@@ -7,6 +7,21 @@ def returns_most_sanitary_rest_in_zip_and_cuisine
   return_winning_restaurant(zipcode_input, cuisine_input)
 end
 
+def return_to_menu_or_exit
+  puts "Would you like to return to the menu or exit?"
+  puts "Enter \'menu\' or \'exit\'"
+  input = gets.chomp
+  until input == "exit" || input == "menu" do
+    puts "Incomplete command. Please enter either \'menu\' or \'exit\'"
+    input = gets.chomp
+  end
+  if input == "exit"
+    puts "\nGoodbye!"
+  elsif input == "menu"
+    runner
+  end
+end
+
 def return_winning_restaurant(zipcode, cuisine)
   winning_restaurant = Restaurant.most_sanitary_in_area_by_cuisine(zipcode, cuisine)
   puts "\nRestaurant: #{return_data_format(winning_restaurant.name)} \nLast Inspection Score: #{winning_restaurant.most_recent_inspection.score} \n\n"
