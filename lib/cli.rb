@@ -24,7 +24,7 @@ def introduction
 
 
 
-"
+".blue
 end
 
 def menu
