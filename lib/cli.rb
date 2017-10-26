@@ -48,9 +48,9 @@ def menu_input(input)
   when "2"
     puts "2"
   when "3"
-    user_story_three
+    puts "3"
   when "4"
-    puts "4"
+    user_story_four
   else
     puts "That is not a valid selection. Please enter a number 1 - 4"
   end
@@ -60,4 +60,20 @@ def runner
 puts introduction
 puts menu
 puts menu_input(get_input)
+end
+#
+#runner
+
+def rat
+  puts "         __             _,-\"~^\"-.
+       _// )      _,-\"~`         `.
+     .\" ( /`\"-,-\"`                 ;
+    / 6                             ;
+   /           ,             ,-\"     ;
+  (,__.--.      \           /        ;
+   //'   /`-.\   |          |        `._________
+     _.-'_/`  )  )--...,,,___\     \-----------,)
+   (((\"~` _.-'.-'           __`-.   )         //
+     jgs (((\"`             (((---~\"`         //
+                                            ((________________"
 end

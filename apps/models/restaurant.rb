@@ -107,7 +107,7 @@ end
 
 def self.find_rodents_by_zipcode(zipcode)
   restaurants_in_zip = find_restaurant_by_zipcode(zipcode.to_s)
-  rodent_violation_codes = ["08A", "04L", "04K"]
+  rodent_violation_codes = ["04L", "04K"]
   restaurants_with_rodents = restaurants_in_zip.select do |restaurant|
     restaurant.violation_codes_from_most_recent_inspection & rodent_violation_codes != []
   end

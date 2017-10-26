@@ -3,7 +3,7 @@ require 'json'
 require 'pry'
 
 def fetch_data_on_restaurants
-  restaurants = RestClient.get("https://data.cityofnewyork.us/resource/9w7m-hzhe.json")
+  restaurants = RestClient.get("https://data.cityofnewyork.us/resource/9w7m-hzhe.json?$limit=350000")
   restaurants_parsed = JSON.parse(restaurants)
 end
 
