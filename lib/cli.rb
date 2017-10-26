@@ -80,7 +80,7 @@ def rat
                                             ((________________"
 end
 
-<<<<<<< HEAD
+
 def return_to_menu_or_exit
   puts "Would you like to return to the menu or exit?"
   puts "Enter \'menu\' or \'exit\'"
@@ -93,7 +93,8 @@ def return_to_menu_or_exit
     puts "\nGoodbye!"
   elsif input == "menu"
     runner
-=======
+  end
+end
 # retreiving zipcode functions
 
 def retrive_the_zipcode
@@ -111,6 +112,5 @@ def valid_zipcode?(zipcode)
     false
   else
     Restaurant.zipcodes_of_restuarants.any?{|word| word == zipcode}
->>>>>>> 3911b2b4f3eb490c3f773298725fd7fcefb003e4
   end
 end
