@@ -48,9 +48,13 @@ def menu_input(input)
   when "1"
     user_story_one
   when "2"
-    puts "2"
+    returns_most_sanitary_rest_in_zip_and_cuisine restaurants_in_area_that_have_least_violations
   when "3"
+<<<<<<< HEAD
     user_story_three
+=======
+    returns_most_sanitary_rest_in_zip_and_cuisine
+>>>>>>> 3911b2b4f3eb490c3f773298725fd7fcefb003e4
   when "4"
     user_story_four
   else
@@ -80,6 +84,7 @@ def rat
                                             ((________________"
 end
 
+<<<<<<< HEAD
 def return_to_menu_or_exit
   puts "Would you like to return to the menu or exit?"
   puts "Enter \'menu\' or \'exit\'"
@@ -92,5 +97,24 @@ def return_to_menu_or_exit
     puts "\nGoodbye!"
   elsif input == "menu"
     runner
+=======
+# retreiving zipcode functions
+
+def retrive_the_zipcode
+  puts "What zipcode are you searching for food in?"
+  zipcode_input = gets.chomp
+   while !valid_zipcode?(zipcode_input)
+     zipcode_input = gets.chomp
+   end
+   zipcode_input
+end
+
+def valid_zipcode?(zipcode)
+  if zipcode.length != 5
+    puts "Your zipcode is not 6 digits. Please reenter.\n"
+    false
+  else
+    Restaurant.zipcodes_of_restuarants.any?{|word| word == zipcode}
+>>>>>>> 3911b2b4f3eb490c3f773298725fd7fcefb003e4
   end
 end

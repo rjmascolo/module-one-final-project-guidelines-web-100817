@@ -5,6 +5,7 @@ def returns_most_sanitary_rest_in_zip_and_cuisine
   cusine_options_in_neighborhood(zipcode_input)
   cuisine_input = retrive_the_cuisine(zipcode_input)
   return_winning_restaurant(zipcode_input, cuisine_input)
+  return_to_menu_or_exit
 end
 
 def return_to_menu_or_exit
@@ -39,24 +40,6 @@ end
 
 def valid_cuisine_type? (cuisine, zipcode)
   Restaurant.cuisine_available_in_zipcode(zipcode).any?{ |word| word.downcase == cuisine.downcase }
-end
-
-def retrive_the_zipcode
-  puts "What zipcode are you searching for food in?"
-  zipcode_input = gets.chomp
-   while !valid_zipcode?(zipcode_input)
-     zipcode_input = gets.chomp
-   end
-   zipcode_input
-end
-
-def valid_zipcode?(zipcode)
-  if zipcode.length != 5
-    puts "Your zipcode is not 6 digits. Please reenter.\n"
-    false
-  else
-    Restaurant.zipcodes_of_restuarants.any?{|word| word == zipcode}
-  end
 end
 
 def cusine_options_in_neighborhood(zipcode)
