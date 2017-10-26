@@ -49,7 +49,7 @@ def menu_input(input)
   when "1"
     user_story_one
   when "2"
-    returns_most_sanitary_rest_in_zip_and_cuisine restaurants_in_area_that_have_least_violations
+    restaurants_in_area_that_have_least_violations
   when "3"
     user_story_three
   when "4"

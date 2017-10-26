@@ -55,7 +55,8 @@ def cusine_options_in_neighborhood(zipcode)
         if array.length == index + 1
           puts "#{value}"
         else
-          puts "#{value}   ||  #{array[index+1]}"
+          puts "#{value}  ||  #{array[index+1]}"
+          binding.pry
         end
       else
         puts "#{value}  ||  #{array[index + 1]}  ||  #{array[index + 2]}  "
