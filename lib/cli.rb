@@ -50,9 +50,9 @@ def menu_input(input)
   when "2"
     returns_most_sanitary_rest_in_zip_and_cuisine restaurants_in_area_that_have_least_violations
   when "3"
-    returns_most_sanitary_rest_in_zip_and_cuisine
+    user_story_three
   when "4"
-    user_story_four
+    returns_most_sanitary_rest_in_zip_and_cuisine
   else
     puts "That is not a valid selection. Please enter a number 1 - 4"
   end

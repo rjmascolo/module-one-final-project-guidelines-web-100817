@@ -47,7 +47,7 @@ class Inspection < ActiveRecord::Base
  end
 
  def self.filters_by_two_inspection_codes(code1, code2)
-   self.filter_by_inspection_code(code1) & self.filter_by_inspection_code(code2)
+   self.filter_by_inspection_code(code1) || self.filter_by_inspection_code(code2)
  end
 
  def self.filter_two_inspection_codes_by_zip(zipcode, code1, code2)
@@ -55,17 +55,11 @@ class Inspection < ActiveRecord::Base
  end
 
   def self.find_rodents_by_zipcode(zipcode)
-     restaurants_in_zip = filter_by_zipcode(zipcode.to_s)
-     rodent_violation_codes = ["04L", "04K"]
-    restaurants_with_rodents = restaurants_in_zip.select do |inspection|
-      binding.pry
-      inspection.full_violation_codes & rodent_violation_codes != []
-    end
-    binding.pry
-    if restaurants_with_rodents == []
+    inspections_with_rodents = Inspection.filter_two_inspection_codes_by_zip(zipcode, "04L", "04K").uniq
+    if inspections_with_rodents == []
       "No restaurants with rodents found in #{zipcode}"
     else
-      restaurants_with_rodents.map do |inspection|
+      inspections_with_rodents.map do |inspection|
         "#{return_data_format(inspection.restaurant.name)}, #{inspection.restaurant.address_without_zipcode}"
       end
     end
