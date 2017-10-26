@@ -59,12 +59,14 @@ class Inspection < ActiveRecord::Base
  end
 
   def self.find_rodents_by_zipcode(zipcode)
-    inspections_with_rodents = Inspection.filter_two_inspection_codes_by_zip(zipcode, "04L", "04K").uniq
-    if inspections_with_rodents == []
+    all_inspections_with_rodents = Inspection.filter_two_inspection_codes_by_zip(zipcode, "04L", "04K")
+    restaurants_with_rodents = Inspection.find_restaurants_based_on_list(all_inspections_with_rodents)
+    restaurants_with_rodents_alpha = restaurants_with_rodents.sort_by{|restaurant| restaurant.name}
+    if restaurants_with_rodents_alpha == []
       "No restaurants with rodents found in #{zipcode}"
     else
-      inspections_with_rodents.map do |inspection|
-        "#{return_data_format(inspection.restaurant.name)}, #{inspection.restaurant.address_without_zipcode}"
+      restaurants_with_rodents_alpha.map do |restaurant|
+        "#{return_data_format(restaurant.name)}, #{restaurant.address_without_zipcode}"
       end
     end
   end
