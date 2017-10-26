@@ -1,5 +1,4 @@
 def user_story_one
-  system('clear')
   puts restaurant_pic
   puts "Enter the name of the restaurant you'd like the report for."
   name = gets.chomp

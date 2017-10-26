@@ -1,5 +1,4 @@
 def user_story_three
-  system('clear')
   puts rat
   puts ""
   puts Inspection.find_rodents_by_zipcode(gets_rodent_zip)
