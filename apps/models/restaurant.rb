@@ -73,7 +73,7 @@ class Restaurant < ActiveRecord::Base
 
   def score_return(score)
     if score != nil
-      "Its score was #{restaurant.most_recent_inspection.score}"
+      "Its score was #{self.most_recent_inspection.score}"
     end
   end
 
