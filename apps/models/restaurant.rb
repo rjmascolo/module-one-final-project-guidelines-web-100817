@@ -42,6 +42,10 @@ class Restaurant < ActiveRecord::Base
     self.where(zipcode: zipcode).map{ |obj| obj.cuisine }.uniq
   end
 
+  def self.cuisine_find_by_type (cuisine)
+    self.where(cuisine: cuisine)
+  end
+
 ######### Ryan's section ending ###################
 
 
