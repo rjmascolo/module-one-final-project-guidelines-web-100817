@@ -56,10 +56,12 @@ def menu_input(input)
     returns_most_sanitary_rest_in_zip_and_cuisine
   else
     puts "That is not a valid selection. Please enter a number 1 - 4"
+    puts menu_input(get_input)
   end
 end
 
 def runner
+  system'clear'
   puts introduction
   puts menu
   puts menu_input(get_input)
