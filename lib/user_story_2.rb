@@ -2,15 +2,18 @@
 
 def returns_most_sanitary_rest_in_zip_and_cuisine
   zipcode_input = retrive_the_zipcode
-  puts "\nWhat type of cuisine would you like?\n\n"
   cusine_options_in_neighborhood(zipcode_input)
-  puts "\nAbove are some options in your neighborhood:"
   cuisine_input = retrive_the_cuisine(zipcode_input)
-  winning_restaurant = Restaurant.most_sanitary_in_area_by_cuisine(zipcode_input, cuisine_input)
-  puts "\n\nRestaurant: #{return_data_format(winning_restaurant.name)} \nLast Inspection Score:#{winning_restaurant.most_recent_inspection.score}"
+  return_winning_restaurant(zipcode_input, cuisine_input)
+end
+
+def return_winning_restaurant(zipcode, cuisine)
+  winning_restaurant = Restaurant.most_sanitary_in_area_by_cuisine(zipcode, cuisine)
+  puts "\nRestaurant: #{return_data_format(winning_restaurant.name)} \nLast Inspection Score: #{winning_restaurant.most_recent_inspection.score} \n\n"
 end
 
 def retrive_the_cuisine(zipcode)
+  puts "\nWhat type of cuisine would you like?\n"
   cuisine_input = gets.chomp
   while !valid_cuisine_type?(cuisine_input, zipcode)
     puts "That is not a valid cuisine type. Please try again."
@@ -42,6 +45,7 @@ def valid_zipcode?(zipcode)
 end
 
 def cusine_options_in_neighborhood(zipcode)
+  puts ""
   array = Restaurant.cuisine_available_in_zipcode(zipcode).sort
   array.each_with_index do |value, index|
     if index == 0 || (index) % 3 == 0
@@ -56,4 +60,5 @@ def cusine_options_in_neighborhood(zipcode)
       end
     end
   end
+    puts "\nAbove are some options in your neighborhood:"
 end
