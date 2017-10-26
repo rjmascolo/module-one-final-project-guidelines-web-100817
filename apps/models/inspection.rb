@@ -34,4 +34,17 @@ class Inspection < ActiveRecord::Base
     self.restaurant.most_recent_inspection == self ? true : false
   end
 
+  def self.filter_by_inspection_code(code)
+    includes(:violations).where(violations: {violation_code: code})
+    # "04L", "04K"
+  end
+
+  def self.filters_by_two_inspection_codes(code1, code2)
+    self.filter_by_inspection_code(code1) & self.filter_by_inspection_code(code2)
+  end
+
+  def self.filter_two_inspection_codes_by_zip(zipcode, code1, code2)
+    self.filter_by_zipcode(zipcode).filters_by_two_inspection_codes(code1, code2)
+  end
+
 end
