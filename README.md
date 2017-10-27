@@ -1,4 +1,4 @@
-####                    Health Inspector Inspector                    ####
+##                   Health Inspector Inspector                    ##
 
 Basic Design:   HII is designed to allow the user to find the health grade history
 of a restaurant based on the name and location. Users will also be able to look up
@@ -17,4 +17,4 @@ After that, run.rb is your run file. From the command line inside of the project
 
 This project is licensed under the MIT license. See LICENSE.txt for more details.
 
-#Contributors: Ryan Mascolo, Dick Ward
+#### Contributors: Ryan Mascolo, Dick Ward #####
